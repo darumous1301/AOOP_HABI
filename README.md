@@ -2,10 +2,10 @@
   <img src="appintro.png" alt="Header" width="1000"/><br>
 </p>
 
-# 📝 Description / Overview
+# I. Description / Overview
 H.A.B.I. is a desktop habit-tracking application built in C# Windows Form that allows users to track daily habits/ routines. It is designed for self-improvement-oriented individuals like students who want structure, accountability, and clarity in building their daily routines. The application is single-user and local (C# Windows Forms), making it private, fast, and distraction-free based on the Atomic Habits principle that environment design is the foundation of behavior change.
 
-# Habit Tracker — Class Diagram
+# II. HABI — UML Class Diagram
 
 ```mermaid
 %%{init: {
@@ -318,6 +318,7 @@ classDiagram
     EditHabitForm ..> ThemeManager : Styled By
     NameEntryForm ..> ThemeManager : Styled By
 ```
+# III. HABI - Features
 <table>
   <tr>
     <th>FEATURES</th>
@@ -396,6 +397,117 @@ classDiagram
 </td>
     <td><img src="https://img.shields.io/badge/done-22c55e?style=flat-square"/></td>
   </tr>
-
-
 </table>
+
+---
+
+# ▶️ IV. How to Run the Program
+
+## Prerequisites
+Before you begin, ensure your system meets the following requirements:
+- Operating System: Windows 10 or Windows 11 (Windows Forms applications run natively on Windows).
+- Development Environment: Visual Studio 2022 (The free "Community" edition works perfectly).
+- Framework: Ensure the .NET desktop development workload is checked during your Visual Studio installation.
+
+## Step-by-Step Instructions
+
+### **Step 1️⃣: Get the code**
+```bash
+Step 1: Get the Code
+You need to download the source code to your local machine. You can do this in two ways:
+Option A: Using Git (Recommended)
+Open your Command Prompt or Terminal.
+Navigate to the folder where you want to save the project.
+Run the following command to clone the repository:
+
+Bash
+git clone https://github.com/darumous1301/AOOP_HABI.git
+
+Option B: Direct Download (No Git required)
+Go to the project's GitHub page.
+Click the green <> Code button at the top right of the file list.
+Select Download ZIP.
+Extract the downloaded ZIP file to a folder on your computer.
+
+```
+
+### **Step 2️⃣: Open the project**
+```bash
+Open Visual Studio 2022.
+Click on Open a project or solution.
+Navigate to the folder where you cloned or extracted the project.
+Look for the Solution file named AOOP_HABI.slnx and double-click it to open the project.
+```
+
+### **Step 3️⃣: Build the application**
+```bash
+Before running the app, Visual Studio needs to compile the code.
+At the very top of Visual Studio, click on Build in the menu bar.
+Click Build Solution (Alternatively, press Ctrl + Shift + B on your keyboard).
+Look at the "Output" window at the bottom of the screen. You should see a message indicating the build succeeded with 0 errors.
+```
+
+### **Step 4️⃣: Run the application**
+```bash
+You have two ways to run the application:
+Method 1: Running through Visual Studio (Recommended for Testing)
+Look for the green play button ▶️ labeled Start at the top center of Visual Studio.
+Click it (or press F5).
+The application will launch immediately!
+Method 2: Running the Executable (.exe) Directly If you just want to run the app without opening Visual Studio every time:
+Open your File Explorer.
+Navigate into the project folder, then go to: AOOP_HABI \ bin \ Debug \ netX.X-windows (or just bin \ Debug depending on your specific target framework).
+Double-click the AOOP_HABI.exe file to launch the program directly.
+What to Expect on Your First Run
+The Welcome Screen: Because this is your first time opening the app, you will immediately be greeted by the Welcome Screen. It will ask for your name to personalize your dashboard.
+Local Data Creation: The application uses a completely local, offline database. When you save your name and log your first habits, the application will automatically generate lightweight data files (like config.txt, habits.csv, and habitlogs.csv) in your application folder to save your progress permanently.
+```
+
+# 👨‍💻 V. Author & Acknowledgements
+
+##  ‧₊˚ ┊ Contributors
+
+<table>
+<tr>
+    <th> &nbsp; </th>
+    <th> Name </th>
+    <th> Role </th>
+</tr>
+<tr>
+    <td><img src="static/alyzza.png" width="100" height="100"> </td>
+    <td><strong>Alyzza Monique Q. Aragon, BSCS</strong> <br/>
+    <a href="https://github.com/darumous1301" target="_blank">
+    <img src="https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&logoColor=yellow" alt="darumous1301's GitHub">
+        </a>
+    </td>
+    <td>Front-End Developer</td>
+</tr>
+<tr>
+    <td><img src="static/anica.png" width="100" height="100"> </td>
+    <td><strong>Anica Kim D. Baruel, BSCS</strong> <br/>
+    <a href="https://github.com/ciancrey" target="_blank">
+     <img src="https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&logoColor=pink" alt="Anicakim13's GitHub">
+        </a>
+    </td>
+    <td>Project Manager & Documentation Head</td>
+</tr>
+<tr>
+    <td><img src="static/ivy.png" width="100" height="100"> </td>
+    <td><strong>Ivy Emerald C. Julongbayan, BSCS</strong> <br/>
+    <a href="https://github.com/Anicakim13" target="_blank">
+    <img src="https://img.shields.io/badge/GitHub-%23121011.svg?logo=github&logoColor=pink" alt="Anicakim13's GitHub">
+        </a>
+    </td>
+    <td>Back-End Developer</td>
+</tr>
+</table>
+---
+
+## 🙏 VI. Acknowledgements
+
+We would like to express our gratitude to:
+
+- **Ms. Fatima Marie M. Agdon** - for guiding us throughout the development of the project, for the consultation sessions, and for the tips to make our project appealing. Your expertise and inputs from our previous proposal drives us to have a clear goal in pursuing this project. We are truly grateful.
+- **CS-2201** -  for sharing ideas and giving feedback to make our proposed Habit Tracker meaningful.
+- **Visual Studio | GitHub | AI Tools | Online Community** - for being our tool to successfully implement the game and for giving us assistance for us to be guided in the process of doing it.
+---
