@@ -1,4 +1,9 @@
-# AOOP_HABI
+<p align="center">
+  <img src="appintro.png" alt="Header" width="1000"/><br>
+</p>
+
+# 📝 Description / Overview
+H.A.B.I. is a desktop habit-tracking application built in C# Windows Form that allows users to track daily habits/ routines. It is designed for self-improvement-oriented individuals like students who want structure, accountability, and clarity in building their daily routines. The application is single-user and local (C# Windows Forms), making it private, fast, and distraction-free based on the Atomic Habits principle that environment design is the foundation of behavior change.
 
 # Habit Tracker — Class Diagram
 
