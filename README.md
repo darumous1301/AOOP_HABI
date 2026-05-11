@@ -5,6 +5,8 @@
 # I. Description / Overview
 H.A.B.I. is a desktop habit-tracking application built in C# Windows Form that allows users to track daily habits/ routines. It is designed for self-improvement-oriented individuals like students who want structure, accountability, and clarity in building their daily routines. The application is single-user and local (C# Windows Forms), making it private, fast, and distraction-free based on the Atomic Habits principle that environment design is the foundation of behavior change.
 
+The application addresses three following problems. Firstly,  people forget their habits because there is no environmental cue reminding them. H.A.B.I. solves this with a daily dashboard that shows the weekly checklist of all habits the moment the app opens that functions as a visual cue that makes good behavior obvious and impossible to ignore. Second, habits feel like chores when there is no reward tied to them so the app proposed streak counters and a progress bar that will make the act of showing up feels worth returning to. And lastly to make it more satisfying,  It delivers instant satisfaction through streaks, completion sounds and a daily/weekly progress bar that makes the invisible work of habit-building feel tangible and rewarding in real time.
+
 # II. HABI — UML Class Diagram
 
 ```mermaid
@@ -34,7 +36,7 @@ H.A.B.I. is a desktop habit-tracking application built in C# Windows Form that a
     "fillType7": "#16213e"
   }
 }}%%
-
+ 
 classDiagram
 
     %% ==========================================
@@ -120,31 +122,8 @@ classDiagram
         +DeleteHabitAndLogs(habitId: String) void
     }
 
-    class ThemeManager {
-        <<static>>
-        +Color NavBg
-        +Color NavActive
-        +Color PageBg
-        +Color CardBg
-        +Color TextPrimary
-        +Color AccentGreen
-        +Color AccentRed
-        +Color AccentAmber
-        +Font FontTitle
-        +Font FontBody
-        +StyleForm(form: Form) void
-        +StyleLabel(lbl: Label, secondary: bool) void
-        +StyleCard(card: Panel) void
-        +StyleButton(btn: Button, type: String) void
-        +StyleTextBox(txt: TextBox) void
-        +StyleNumericUpDown(nud: NumericUpDown) void
-        +StyleComboBox(cmb: ComboBox) void
-        +StyleDataGridView(dgv: DataGridView) void
-        +MakeRounded(ctrl: Control, radius: int) void
-    }
-
     %% ==========================================
-    %% FORMS / UI CLASSES
+    %% FORMS (Business Logic Only)
     %% ==========================================
     class Program {
         <<static>>
@@ -153,150 +132,85 @@ classDiagram
 
     class NameEntryForm {
         -CsvDataService _dataService
-        -Panel pnlContainer
-        -TextBox txtName
-        -Button btnStart
-        +NameEntryForm()
-        -BuildUI() void
-        -ApplyTheme() void
-        -WrapTextBox(txt: TextBox) void
-        -MakeRounded(ctrl: Control, radius: int) void
         -PreFillName() void
-        -btnStart_Click(sender: object, e: EventArgs) void
     }
 
     class MainForm {
         -Form _activeForm
-        -Button _activeNavBtn
-        +MainForm()
-        -MainForm_Load(sender: object, e: EventArgs) void
-        -ApplyTheme() void
-        -StyleNavButton(btn: Button) void
-        -OpenChildForm(childForm: Form, activeBtn: Button) void
-        -btnNavDashboard_Click(sender: object, e: EventArgs) void
-        -btnNavToday_Click(sender: object, e: EventArgs) void
-        -btnNavHistory_Click(sender: object, e: EventArgs) void
-        -btnNavAddHabit_Click(sender: object, e: EventArgs) void
-        -btnNavLogout_Click(sender: object, e: EventArgs) void
+        -OpenChildForm(childForm: Form) void
     }
 
     class DashboardForm {
         -CsvDataService _dataService
         -DateTime _currentCalendarMonth
-        +DashboardForm()
-        -DashboardForm_Load(sender: object, e: EventArgs) void
         -LoadDashboard() void
-        -BuildHabitCards(habits: List~Habit~, allLogs: List~HabitLog~, todayLogs: List~HabitLog~) void
+        -BuildHabitCards(habits: List~Habit~, allLogs: List~HabitLog~) void
         -QuickLogBinary(habit: Habit, isCompleted: bool) void
         -CalculateStreak(habitId: String, allLogs: List~HabitLog~) int
         -BuildWeeklyChart(allLogs: List~HabitLog~, habits: List~Habit~) void
         -IsQuantitativeComplete(log: HabitLog, habits: List~Habit~) bool
         -LoadDailyQuote() void
-        -BuildSingleCalendar(pnl: Panel, month: DateTime) void
-        -CalendarDay_Click(sender: object, e: EventArgs) void
-        -ApplyTheme() void
-        -StyleStatCard(card: Panel, numLabel: Label, textLabel: Label) void
-        -MakeRounded(ctrl: Control, radius: int) void
+        -BuildSingleCalendar(month: DateTime) void
     }
 
     class TodayForm {
         -CsvDataService _dataService
         -List~Habit~ _habits
         -List~HabitLog~ _todayLogs
-        -Dictionary~String, CheckBox~ _binaryControls
-        -Dictionary~String, NumericUpDown~ _quantControls
-        -Dictionary~String, TextBox~ _notesControls
         -String _selectedHabitId
-        +TodayForm()
-        -TodayForm_Load(sender: object, e: EventArgs) void
         -LoadTodayHabits() void
-        -SelectCard(selectedCard: Panel, habitId: String) void
+        -SelectCard(habitId: String) void
         -CalculateStreak(habitId: String, allLogs: List~HabitLog~) int
-        -btnSaveAll_Click(sender: object, e: EventArgs) void
-        -btnAddHabit_Click(sender: object, e: EventArgs) void
-        -btnEditHabit_Click(sender: object, e: EventArgs) void
-        -btnDeleteHabit_Click(sender: object, e: EventArgs) void
-        -ApplyTheme() void
-        -MakeRounded(ctrl: Control, radius: int) void
     }
 
     class HistoryForm {
         -CsvDataService _dataService
         -List~Habit~ _habits
         -List~HabitLog~ _allLogs
-        +HistoryForm()
-        -HistoryForm_Load(sender: object, e: EventArgs) void
         -LoadData() void
-        -SetupGrid() void
-        -PopulateFilter() void
-        -cmbFilterType_SelectedIndexChanged(sender: object, e: EventArgs) void
         -DisplayLogs(logs: List~HabitLog~) void
         -GetStatus(log: HabitLog, habit: Habit) String
         -UpdateSummary(logs: List~HabitLog~) void
-        -btnFilter_Click(sender: object, e: EventArgs) void
-        -btnClearFilter_Click(sender: object, e: EventArgs) void
-        -btnExport_Click(sender: object, e: EventArgs) void
-        -PopulateHeatmapFilter() void
         -BuildHeatmap(logs: List~HabitLog~) void
-        -GetHeatmapColor(date: DateTime, logsByDate: Dictionary~DateTime, List~HabitLog~~) Color
-        -GetHeatmapTooltip(date: DateTime, logsByDate: Dictionary~DateTime, List~HabitLog~~) String
-        -DrawHeatmapLegend(offsetY: int, totalSize: int) void
-        -btnRefreshHeatmap_Click(sender: object, e: EventArgs) void
-        -ApplyTheme() void
+        -GetHeatmapColor(date: DateTime) Color
+        -GetHeatmapTooltip(date: DateTime) String
     }
 
     class AddHabitForm {
         -CsvDataService _dataService
-        +AddHabitForm()
-        -TrackingType_CheckedChanged(sender: object, e: EventArgs) void
         -ToggleQuantitativeFields() void
-        -btnSave_Click(sender: object, e: EventArgs) void
-        -ApplyTheme() void
-        -AddHabitForm_Load(sender: object, e: EventArgs) void
     }
 
     class EditHabitForm {
         -CsvDataService _dataService
         -Habit _habit
-        +EditHabitForm(habit: Habit)
         -LoadHabitData() void
-        -TrackingType_CheckedChanged(sender: object, e: EventArgs) void
         -ToggleQuantitativeFields() void
-        -btnSaveEdit_Click(sender: object, e: EventArgs) void
-        -btnCancelEdit_Click(sender: object, e: EventArgs) void
-        -ApplyTheme() void
     }
 
     %% ==========================================
     %% RELATIONSHIPS & MULTIPLICITY
     %% ==========================================
-
-    %% Object Compositions (Habit owns its Enums)
     Habit "1" *-- "1" Intent
     Habit "1" *-- "1" TrackingType
     Habit "1" *-- "1" HabitCategory
     Habit "1" *-- "1" GoalPeriod
     Habit "1" *-- "1" TimeRange
-
-    %% Associations (HabitLog relates to Habit via HabitID)
+    
     HabitLog "0..*" --> "1" Habit : Logs
-
-    %% Service Dependencies (Data Service manages lists of models)
+    
     CsvDataService "1" --> "0..*" Habit : Manages
     CsvDataService "1" --> "0..*" HabitLog : Manages
-
-    %% Form Navigations (MainForm controls the child forms)
+    
     MainForm "1" --> "1" DashboardForm : Opens
     MainForm "1" --> "1" TodayForm : Opens
     MainForm "1" --> "1" HistoryForm : Opens
     MainForm "1" --> "1" AddHabitForm : Opens
-
-    %% Sub-Form Navigations
+    
     TodayForm "1" --> "1" AddHabitForm : Spawns
     TodayForm "1" --> "1" EditHabitForm : Spawns
     EditHabitForm "1" --> "1" Habit : Modifies
-
-    %% Data Service Consumption (All forms use the service)
+    
     DashboardForm "1" ..> "1" CsvDataService : Consumes
     TodayForm "1" ..> "1" CsvDataService : Consumes
     HistoryForm "1" ..> "1" CsvDataService : Consumes
@@ -304,19 +218,9 @@ classDiagram
     EditHabitForm "1" ..> "1" CsvDataService : Consumes
     NameEntryForm "1" ..> "1" CsvDataService : Consumes
     MainForm "1" ..> "1" CsvDataService : Consumes
-
-    %% Application Flow
+    
     Program "1" ..> "1" NameEntryForm : Starts
     Program "1" ..> "1" MainForm : Boots if Login OK
-
-    %% Theme Dependencies
-    MainForm ..> ThemeManager : Styled By
-    DashboardForm ..> ThemeManager : Styled By
-    TodayForm ..> ThemeManager : Styled By
-    HistoryForm ..> ThemeManager : Styled By
-    AddHabitForm ..> ThemeManager : Styled By
-    EditHabitForm ..> ThemeManager : Styled By
-    NameEntryForm ..> ThemeManager : Styled By
 ```
 # III. HABI - Features
 <table>
