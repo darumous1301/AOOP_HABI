@@ -318,3 +318,84 @@ classDiagram
     EditHabitForm ..> ThemeManager : Styled By
     NameEntryForm ..> ThemeManager : Styled By
 ```
+<table>
+  <tr>
+    <th>FEATURES</th>
+    <th>DESCRIPTION</th>
+    <th>STATUS</th>
+  </tr>
+  <tr>
+    <td>CRUD FEATURE - Add Habit Form</td>
+    <td>This feature allows users to add habits and they can specify habit name, intent, tracking method (binary/quantitative), category, frequency, reminder time and scheduling (start and end date).
+</td>
+    <td><img src="https://img.shields.io/badge/done-22c55e?style=flat-square"/></td>
+  </tr>
+  <tr>
+    <td>CRUD FEATURE - Edit Habit Form</td>
+    <td>Edit feature is revealed when the user navigates into the Today Nav. Button. They can either right click the habit card or select a specific habit and click the edit button to edit a habit's details.
+</td>
+    <td><img src="https://img.shields.io/badge/done-22c55e?style=flat-square"/></td>
+  </tr>
+   <tr>
+    <td>CRUD FEATURE - Delete Habit</td>
+    <td>This CRUD feature allows users to delete a specific habit either by right-clicking or selecting a habit and clicking the delete button for a confirmation.
+</td>
+    <td><img src="https://img.shields.io/badge/done-22c55e?style=flat-square"/></td>
+  </tr>
+   <tr>
+    <td>Habit Cards - Panels</td>
+    <td>Displays all created habits on organized cards or panel format, showing habit details, schedule, streak counts progress bar (if quantitative) and completion status.
+</td>
+    <td><img src="https://img.shields.io/badge/done-22c55e?style=flat-square"/></td>
+  </tr>
+   <tr>
+    <td>A 4-Month Calendar View</td>
+    <td>This feature completes our habit tracker since it displays a 4- month tracker of progress wherein a user can scan if he/she consistently performs their planned habits.
+</td>
+    <td><img src="https://img.shields.io/badge/done-22c55e?style=flat-square"/></td>
+  </tr>
+   <tr>
+    <td>CRUD FEATURE - Search Filtering
+</td>
+    <td>Enable users to quickly search and filter habits based on keywords, categories, or completion status.</td>
+    <td><img src="https://img.shields.io/badge/done-22c55e?style=flat-square"/></td>
+  </tr>
+   <tr>
+    <td>HeatMap</td>
+    <td>Visualizes user activity and habit completion patterns using color-coded progress tracking over time.
+</td>
+    <td><img src="https://img.shields.io/badge/done-22c55e?style=flat-square"/></td>
+  </tr>
+   <tr>
+    <td>Check List</td>
+    <td>Provides a daily checklist where users can mark habits as completed. This serves as a visual cue and tracks progress.
+</td>
+    <td><img src="https://img.shields.io/badge/done-22c55e?style=flat-square"/></td>
+  </tr>
+   <tr>
+    <td>Streak Counter</td>
+    <td>Tracks consecutive days/ weeks a habit is completed, motivating users to maintain consistency and not break the streak.
+</td>
+    <td><img src="https://img.shields.io/badge/done-22c55e?style=flat-square"/></td>
+  </tr>
+   <tr>
+    <td>Progress Bar</td>
+    <td>Shows daily and weekly completion percentage based on the number of habits finished.</td>
+    <td><img src="https://img.shields.io/badge/done-22c55e?style=flat-square"/></td>
+  </tr>
+   <tr>
+    <td>Export to csv
+</td>
+    <td>Enable users to export habit-tracking data into CSV format for reporting and backup purposes.
+</td>
+    <td><img src="https://img.shields.io/badge/done-22c55e?style=flat-square"/></td>
+  </tr>
+  <tr>
+    <td>History View</td>
+    <td>Provides access to past habit records and statistics, helping users review long-term progress and performance trends.
+</td>
+    <td><img src="https://img.shields.io/badge/done-22c55e?style=flat-square"/></td>
+  </tr>
+
+
+</table>
